@@ -30,7 +30,7 @@ import org.zkoss.zul.Div;
  *    <li>New ADempiere 3.8.0 ZK Theme Light  https://adempiere.atlassian.net/browse/ADEMPIERE-320
  */
 
-public class StringBox extends Div implements org.zkoss.zul.api.Textbox
+public class StringBox extends Div implements org.zkoss.zul.Textbox
 {
     /**
 	 * 

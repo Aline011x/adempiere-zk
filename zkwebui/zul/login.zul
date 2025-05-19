@@ -1,0 +1,14 @@
+<?component name="loginWindow" class="org.adempiere.webui.window.LoginWindow"?>
+<zk>
+    <borderlayout id="mainLayout" sclass="login-window" apply="org.adempiere.webui.controller.LoginController">
+        <north id="northRegion" sclass="login-north-panel" border="none" autoscroll="true"/>
+        <south id="southRegion" sclass="login-south-panel" border="none" autoscroll="true"/>
+        <west id="westRegion" sclass="login-west-panel" border="none" autoscroll="true"/>
+        <east id="eastRegion" sclass="login-east-panel" border="none" autoscroll="true"/>
+        <center border="none" autoscroll="true" flex="true">
+            <vbox hflex="1" vflex="1" pack="center" align="center" style="background-color: transparent;">
+                <loginWindow id="loginWin"/>
+            </vbox>
+        </center>
+    </borderlayout>
+</zk>

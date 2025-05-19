@@ -26,13 +26,14 @@ import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelExt;
 import org.zkoss.zul.ListitemComparator;
 import org.zkoss.zul.event.ListDataEvent;
+import org.zkoss.zul.ext.Sortable;
 
 /**
  * 
  * @author Low Heng Sin
  *
  */
-public class GridTableListModel extends AbstractListModel implements TableModelListener, ListModelExt {
+public class GridTableListModel extends AbstractListModel<Object> implements TableModelListener, ListModelExt, Sortable {
 	
 	/**
 	 * 
@@ -65,6 +66,16 @@ public class GridTableListModel extends AbstractListModel implements TableModelL
 	 * @param rowIndex
 	 * @see ListModel#getElementAt(int)
 	 */
+
+	@Override
+	public String getSortDirection(Comparator cmpr) {
+		return "natural";
+	}
+
+	public String getSortDirection(Comparator cmpr, boolean ascending) {
+		return ascending ? "ascending" : "descending";
+	}
+
 	public Object getElementAt(int rowIndex) {
 		int columnCount = tableModel.getColumnCount();
 		Object[] values = new Object[columnCount];

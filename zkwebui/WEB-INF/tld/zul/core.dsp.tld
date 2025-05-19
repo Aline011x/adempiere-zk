@@ -1,107 +1,170 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 Purpose:
-	Defines methods and actions for DSP
+    Defines methods and actions for DSP
 Description:
-	
-Histroy:
-	Tue Sep 12 15:14:51     2006, Created by tomyeh
-
-Copyright (C) 2006 Potix Corporation. All Rights Reserved.
+    Updated for ZK 6.5.7
+Copyright:
+    (C) 2005-2013 Potix Corporation. All Rights Reserved.
 -->
 
-<taglib>
-	<uri>http://www.zkoss.org/dsp/zul/core</uri>
-	<description>
-	Methods and actions for ZUL in DSP/ZUML
-	</description>
+<taglib version="2.1"
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<description>Methods and actions for ZK in DSP/ZUML</description>
+	<tlib-version>2.1</tlib-version>
+	<short-name>zulcoredsp</short-name>
+	<uri>http://www.zkoss.org/dsp/zk/core</uri>
 
-
-	<!--           -->
 	<!-- Functions -->
-	<!--           -->
+
 	<function>
-		<name>getColAttrs</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	java.lang.String getColAttrs(org.zkoss.zul.Row, int)
-		</function-signature>
-		<description>
-	Returns the attribute used for the cell of the specified row and index.
-		</description>
+<!--		<description>Redraw the specified component.</description>-->
+		<name>redraw</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>void redraw(org.zkoss.zk.ui.Component, java.io.Writer)</function-signature>
 	</function>
+
 	<function>
-		<name>getBoxChildOuterAttrs</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	java.lang.String getBoxChildOuterAttrs(org.zkoss.zk.ui.Component)
-		</function-signature>
-		<description>
-	Returns the inner attributes used for the cell of the specified child
-	when it is placed inside of hbox/vbox.
-		</description>
+		<name>outResponseJavaScripts</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outResponseJavaScripts(java.util.Collection)</function-signature>
+<!--		<description>Returns JavaScript to handle the specified responses.</description>-->
 	</function>
+
 	<function>
-		<name>getBoxChildInnerAttrs</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	java.lang.String getBoxChildInnerAttrs(org.zkoss.zk.ui.Component)
-		</function-signature>
-		<description>
-	Returns the outer attributes used for the cell of the specified child
-	when it is placed inside of hbox/vbox.
-		</description>
+<!--		<description>Returns HTML tags to include all JavaScripts used by all languages.</description>-->
+		<name>outLangJavaScripts</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outLangJavaScripts(java.lang.String)</function-signature>
 	</function>
+
 	<function>
-		<name>setStripeClass</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	void setStripeClass(org.zkoss.zk.ui.Component)
-		</function-signature>
-		<description>
-	Sets the stripe CSS for each row.
-		</description>
+<!--		<description>Returns HTML tags to include all style sheets used by all languages.</description>-->
+		<name>outLangStyleSheets</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outLangStyleSheets()</function-signature>
 	</function>
+
 	<function>
-		<name>resetStripeClass</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	void resetStripeClass(org.zkoss.zk.ui.Component)
-		</function-signature>
-		<description>
-	Resets the stripe CSS for each row.
-		</description>
+<!--		<description>Generates the unavailable message in HTML tags, if any.</description>-->
+		<name>outHtmlUnavailable</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outHtmlUnavailable(org.zkoss.zk.ui.Page)</function-signature>
 	</function>
+
 	<function>
-		<name>shallVisitTree</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	boolean shallVisitTree(org.zkoss.zul.Tree, org.zkoss.zk.ui.Component)
-		</function-signature>
-		<description>
-	 Returns whether the specified tree should be visited.
-		</description>
+<!--		<description>Returns the content for the header element of the specified page.</description>-->
+		<name>outHeaders</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outHeaders(org.zkoss.zk.ui.Page, boolean)</function-signature>
 	</function>
+
 	<function>
-		<name>shallRenderTree</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	boolean shallRenderTree(org.zkoss.zul.Tree)
-		</function-signature>
-		<description>
-	Returns whether the specified tree shall be rendered.
-		</description>
+<!--		<description>Returns attributes of the root element of the specified page.</description>-->
+		<name>outRootAttributes</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outRootAttributes(org.zkoss.zk.ui.Page)</function-signature>
 	</function>
+
 	<function>
-		<name>clearTreeRenderInfo</name>
-		<function-class>org.zkoss.zul.fn.ZulFns</function-class>
-		<function-signature>
-	void clearTreeRenderInfo(org.zkoss.zul.Tree)
-		</function-signature>
-		<description>
-	Clears up the info stored in attributes that are used to render
-	a tree in the paging mold.
-		</description>
+<!--		<description>Returns the content type.</description>-->
+		<name>outContentType</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outContentType(org.zkoss.zk.ui.Page)</function-signature>
 	</function>
+
+	<function>
+<!--		<description>Returns the document type.</description>-->
+		<name>outDocType</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outDocType(org.zkoss.zk.ui.Page)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns the first line to output.</description>-->
+		<name>outFirstLine</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outFirstLine(org.zkoss.zk.ui.Page)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Converts the URI to absolute if necessary.</description>-->
+		<name>toAbsoluteURI</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String toAbsoluteURI(java.lang.String, boolean)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns the attributes to render a page.</description>-->
+		<name>outPageAttrs</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outPageAttrs(org.zkoss.zk.ui.Page)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns the ZK specific HTML tags.</description>-->
+		<name>outZkHtmlTags</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outZkHtmlTags()</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns the ZK specific head HTML tags with page headers.</description>-->
+		<name>outZkHeadHtmlTags</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outZkHeadHtmlTags(org.zkoss.zk.ui.Page)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Removes CSS classes and styles from the input.</description>-->
+		<name>noCSSAttrs</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String noCSSAttrs(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns only CSS classes and styles from the input.</description>-->
+		<name>outCSSAttrs</name>
+		<function-class>org.zkoss.zk.fn.ZkFns</function-class>
+		<function-signature>java.lang.String outCSSAttrs(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns date-relevant labels in JavaScript.</description>-->
+		<name>outLocaleJavaScript</name>
+		<function-class>org.zkoss.zk.fn.DspFns</function-class>
+		<function-signature>java.lang.String outLocaleJavaScript()</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Returns HTML tags to include style sheets for the specified device.</description>-->
+		<name>outDeviceStyleSheets</name>
+		<function-class>org.zkoss.zk.fn.DspFns</function-class>
+		<function-signature>java.lang.String outDeviceStyleSheets(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Sets Cache-Control and Expires headers for the current request.</description>-->
+		<name>setCacheControl</name>
+		<function-class>org.zkoss.zk.fn.DspFns</function-class>
+		<function-signature>void setCacheControl(java.lang.String, int)</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Sets Cache-Control and Expires headers for CSS class Web resources.</description>-->
+		<name>setCSSCacheControl</name>
+		<function-class>org.zkoss.zk.fn.DspFns</function-class>
+		<function-signature>void setCSSCacheControl()</function-signature>
+	</function>
+
+	<function>
+<!--		<description>Sets Cache-Control and Expires headers for class Web resources.</description>-->
+		<name>setCWRCacheControl</name>
+		<function-class>org.zkoss.zk.fn.DspFns</function-class>
+		<function-signature>void setCWRCacheControl()</function-signature>
+	</function>
+
 </taglib>

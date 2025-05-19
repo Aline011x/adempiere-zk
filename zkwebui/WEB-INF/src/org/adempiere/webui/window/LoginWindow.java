@@ -55,10 +55,10 @@ import java.util.Properties;
  *		<a href="https://github.com/adempiere/adempiere/issues/1347">
  * 		@see FR [ 1347 ] HTTP Status 500 when a ROLE is changed.</a>
  */
+//@org.zkoss.zk.ui.annotation.ComponentAnnotation
 public class LoginWindow extends FWindow implements EventListener
 {
     /**
-	 *
 	 */
 	private static final long serialVersionUID = -365979563919913804L;
     private Properties ctx;

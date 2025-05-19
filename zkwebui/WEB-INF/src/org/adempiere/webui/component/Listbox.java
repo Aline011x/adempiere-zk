@@ -103,11 +103,12 @@ public class Listbox extends org.zkoss.zul.Listbox implements EventListener
     {
         return (ListItem)super.getSelectedItem();
     }
-    
+
+	@Override
     @SuppressWarnings("unchecked")
-    public List<ListItem> getItems()
+    public List<org.zkoss.zul.Listitem> getItems()
     {
-        return (List<ListItem>)super.getItems();
+        return super.getItems();
     }
     
     /** 

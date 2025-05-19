@@ -84,8 +84,8 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.North;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.North;
 import org.zkoss.zul.Menuitem;
 import org.zkoss.zul.Menupopup;
 
@@ -299,7 +299,15 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 			checkad_user_id = (Integer)currSess.getAttribute("Check_AD_User_ID");
 		if (checkad_user_id!=Env.getAD_User_ID(ctx))
 		{
-			SessionManager.getApplication().logout();
+			String msg = "Timestamp=" + new Date() 
+					+ ", Bug 2832968 SessionUser="
+					+ checkad_user_id
+					+ ", ContextUser="
+					+ Env.getAD_User_ID(ctx)
+					+ ".  Please report conditions to your system administrator or in sf tracker 2832968";
+			ApplicationException ex = new ApplicationException(msg);
+			logger.log(Level.SEVERE, msg, ex);
+			throw ex;
 		}
 		// End of temporary code for [ adempiere-ZK Web Client-2832968 ] User context lost?
 
@@ -1775,8 +1783,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 		int tableId = currentTab.getAD_Table_ID();
 		int recordId = currentTab.getRecord_ID();
 
-		boolean isDirectPrint = MProcess.get(ctx, AD_Process_ID).isDirectPrint();
-		ProcessModalDialog processModalDialog = new ProcessModalDialog(this,getWindowNo(), AD_Process_ID,tableId, recordId, isDirectPrint);
+		ProcessModalDialog processModalDialog = new ProcessModalDialog(this,getWindowNo(), AD_Process_ID,tableId, recordId, true);
 		if (processModalDialog.isValidDialog()) {
 			processModalDialog.setPosition("center");
 			try {
@@ -1905,10 +1912,8 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 			int record_ID = currentTab.getRecord_ID();
 			if (record_ID <= 0)
 				return;
-			//	
-			if(processAction == null) {
-				processAction = new WProcessAction(this);
-			}
+			// Is necessary reload for each record to apply the display rules
+			processAction = new WProcessAction(this);
 			processAction.openOption(toolbar.getEvent().getTarget());			
 		}
 	}
@@ -2339,14 +2344,14 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 		m_uiLocked = true;
 
 		if (Executions.getCurrent() != null)
-			Clients.showBusy(null, true);
+			Clients.showBusy(null, "true");
 		else
 		{
 			try {
 				//get full control of desktop
 				Executions.activate(getComponent().getDesktop(), 2000);
 				try {
-					Clients.showBusy(null, true);
+					Clients.showBusy(null, "true");
                 } catch(Error ex){
                 	throw ex;
                 } finally{
@@ -2379,7 +2384,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 			{
 				updateUI(pi);
 			} else {
-				Clients.showBusy(null, false);
+				Clients.showBusy(null, "false");
 			}
 		}
 		else
@@ -2392,7 +2397,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 					{
 						updateUI(pi);
 					} else {
-						Clients.showBusy(null, false);
+						Clients.showBusy(null, "false");
 					}
                 } catch(Error ex){
                 	throw ex;
@@ -2424,7 +2429,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
 		ProcessInfoUtil.setLogFromDB(pi);
 		String logInfo = pi.getLogInfo();
 		//	
-		Clients.showBusy(null, false);
+		Clients.showBusy(null, "false");
 		if (logInfo.length() > 0)
 			FDialog.info(curWindowNo, this.getComponent(), Env.getHeader(ctx, curWindowNo),
 				pi.getTitle() + "<br>" + logInfo);

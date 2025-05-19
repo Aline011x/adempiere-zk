@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 Purpose:
 	Defines methods and actions for DSP
 Description:
-	
 Histroy:
 	Mon Jun 20 20:57:56     2005, Created by tomyeh
+Copyright (C) 2005 Potix Corporation. All Rights Reserved.-->
 
-Copyright (C) 2005 Potix Corporation. All Rights Reserved.
--->
-
-<taglib>
+<taglib version="2.1"
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<!--Methods and actions for ZK in DSP/ZUML-->
+	<tlib-version>2.1</tlib-version>
+	<short-name>zkcoredsp</short-name>
 	<uri>http://www.zkoss.org/dsp/zk/core</uri>
-	<description>
-	Methods and actions for ZK in DSP/ZUML
-	</description>
-
-
 	<!--           -->
 	<!-- Functions -->
 	<!--           -->
@@ -27,9 +25,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	void redraw(org.zkoss.zk.ui.Component, java.io.Writer)
 		</function-signature>
-		<description>
-	Redraw the specified component.
-		</description>
+		<!--Redraw the specified component.-->
 	</function>
 
 	<function>
@@ -38,9 +34,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outResponseJavaScripts(java.util.Collection);
 		</function-signature>
-		<description>
-	Returns javascript to handle the specified responses.
-		</description>
+<!--		<!-Returns javascript to handle the specified responses.-->
 	</function>
 
 	<function>
@@ -49,10 +43,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outLangJavaScripts(java.lang.String)
 		</function-signature>
-		<description>
-	Returns HTML tags to include all JavaScripts used by all languages.
-	The argument is ignored (since 3.5.0; reserved for backward compatible).
-		</description>
+<!--		<!-Returns HTML tags to include all JavaScripts used by all languages. The argument is ignored (since 3.5.0; reserved for backward compatible).-->
 	</function>
 	<function>
 		<name>outLangStyleSheets</name>
@@ -60,11 +51,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outLangStyleSheets()
 		</function-signature>
-		<description>
-	Returns HTML tags to include all style sheets used by all languages.
-	Note: it cannot be called without current execution. In other words,
-	it is used to design component templates.
-		</description>
+<!--		<!-Returns HTML tags to include all style sheets used by all languages. Note: it cannot be called without current execution. In other words, it is used to design component templates.-->-->
 	</function>
 	<function>
 		<name>outHtmlUnavailable</name>
@@ -72,9 +59,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outHtmlUnavailable(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
-	Generates the unavailable message in HTML tags, if any.
-		</description>
+<!--		<!-Generates the unavailable message in HTML tags, if any.-->
 	</function>
 	<function>
 		<name>outHeaders</name>
@@ -82,10 +67,7 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outHeaders(org.zkoss.zk.ui.Page, boolean)
 		</function-signature>
-		<description>
-	Returns the content that will be placed inside the header element
-	of the specified page.
-		</description>
+<!--		<!-Returns the content that will be placed inside the header element of the specified page.-->
 	</function>
 	<function>
 		<name>outRootAttributes</name>
@@ -93,10 +75,10 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outRootAttributes(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the content that will be placed as the attributes of
 	the root element of the specified page.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outContentType</name>
@@ -104,9 +86,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outContentType(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the content type.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outDocType</name>
@@ -114,9 +96,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outDocType(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the doc type.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outFirstLine</name>
@@ -124,9 +106,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outFirstLine(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the first line to be generated to the output.
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -135,10 +117,10 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String toAbsoluteURI(java.lang.String, boolean)
 		</function-signature>
-		<description>
+		<!--
 	Converts the specified URI to abolute if necessary.
 	Note: it doesn't convert if this page is included by another page.
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -147,9 +129,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outPageAttrs(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the attributes to render a page.
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -158,9 +140,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outZkHtmlTags()
 		</function-signature>
-		<description>
+		<!--
 	Returns the ZK specific HTML tags, if not generated yet.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outZkHeadHtmlTags</name>
@@ -168,10 +150,10 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outZkHeadHtmlTags(org.zkoss.zk.ui.Page)
 		</function-signature>
-		<description>
+		<!--
 	Returns the ZK specific HTML tags including the headers defined in the page,
 	if not generated yet
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -180,9 +162,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String noCSSAttrs(java.lang.String)
 		</function-signature>
-		<description>
+		<!--
 	Removes the class and style attributes from the specified one.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outCSSAttrs</name>
@@ -190,9 +172,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outCSSAttrs(java.lang.String)
 		</function-signature>
-		<description>
+		<!--
 	Returns only the class and style attributes from the specified one.
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -201,9 +183,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outLocaleJavaScript()
 		</function-signature>
-		<description>
+		<!--
 	Returns date relevant labels in JavaScript.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>outDeviceStyleSheets</name>
@@ -211,11 +193,11 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	java.lang.String outDeviceStyleSheets(java.lang.String)
 		</function-signature>
-		<description>
+		<!--
 	Returns HTML tags to include all style sheets used by the specified device.
 	Note: unlike outLangStyleSheets, it can be called without current execution.
 	@param deviceType the device type. If null, "ajax" is assumed.
-		</description>
+		-->
 	</function>
 
 	<function>
@@ -224,9 +206,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	void setCacheControl(java.lang.String, int)
 		</function-signature>
-		<description>
+		<!--
 	Sets the Cache-Control and Expires headers for the current request.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>setCSSCacheControl</name>
@@ -234,10 +216,10 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	void setCSSCacheControl()
 		</function-signature>
-		<description>
+		<!--
 	Sets the Cache-Control and Expires headers for the CSS file
 	from class Web resource for the current request.
-		</description>
+		-->
 	</function>
 	<function>
 		<name>setCWRCacheControl</name>
@@ -245,9 +227,9 @@ Copyright (C) 2005 Potix Corporation. All Rights Reserved.
 		<function-signature>
 	void setCWRCacheControl()
 		</function-signature>
-		<description>
+		<!--
 	Sets the Cache-Control and Expires headers for
 	class Web resource for the current request.
-		</description>
+		-->
 	</function>
 </taglib>

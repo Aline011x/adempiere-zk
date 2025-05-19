@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app id="WebApp_ID" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 	<display-name>ADempiere WebUI</display-name>
 	<!-- /// -->
 	<!-- DSP -->
@@ -20,6 +20,12 @@
 
 	<!-- //// -->
 	<!-- ZK -->
+
+	<listener>
+		<description>Limpieza de sesiones ZK</description>
+		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+	</listener>
+
 	<listener>
 		<description>
 			Used to cleanup when a session is destroyed
@@ -34,17 +40,25 @@
 		<description>ZK loader for ZUML pages</description>
 		<servlet-name>zkLoader</servlet-name>
 		<servlet-class>
+<!--			org.zkoss.zk.ui.http.DHtmlLayoutServlet-->
 			org.adempiere.webui.session.WebUIServlet
 		</servlet-class>
-		<!-- Must. Specifies URI of the update engine (DHtmlUpdateServlet).
-			It must be the same as <url-pattern> for the update engine.
-		-->
 		<init-param>
 			<param-name>update-uri</param-name>
 			<param-value>/zkau</param-value>
 		</init-param>
+		<init-param>
+			<param-name>compress</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>zkLoader</servlet-name>
 		<url-pattern>*.zul</url-pattern>
@@ -59,6 +73,11 @@
 		<servlet-class>
 			org.zkoss.zk.au.http.DHtmlUpdateServlet
 		</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>auEngine</servlet-name>
@@ -127,7 +146,7 @@
 	</mime-mapping>
 	<mime-mapping>
 		<extension>js</extension>
-		<mime-type>application/x-javascript</mime-type>
+		<mime-type>text/javascript</mime-type>
 	</mime-mapping>
 	<mime-mapping>
 		<extension>pdf</extension>
@@ -182,5 +201,20 @@
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
+
+	<servlet>
+		<servlet-name>zkWebSocket</servlet-name>
+		<servlet-class>org.zkoss.zkmax.ui.http.ZKWebSocket</servlet-class>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>zkWebSocket</servlet-name>
+		<url-pattern>/zkws/*</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>zk.resource.cache</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 </web-app>

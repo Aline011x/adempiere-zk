@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!--
-Purpose:
-	Defines methods and actions for DSP
-Description:
-	
-Histroy:
-	Mon Jun 20 20:57:56     2005, Created by tomyeh
-
-Copyright (C) 2005 Potix Corporation. All Rights Reserved.
+   Modificado para compatibilidad con ZK 6.5.7
+   - Ajustes para integración con componentes ZK
 -->
 
-<taglib>
-	<uri>http://www.zkoss.org/dsp/web/html</uri>
-	<description>
-	Used to develop ZK components for XUL/HTML.
-	</description>
+<taglib version="2.1"
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<description>HTML tags for ZK DSP in version 6.5.4</description>
+	<tlib-version>2.1</tlib-version>
+	<short-name>htmldsp</short-name>
+	<uri>http://www.zkoss.org/zk/html</uri>
 
-	<!--      -->
-	<!-- Tags -->
-	<!--      -->
+	<!-- ========== TAGS ACTUALIZADOS ========== -->
 	<tag>
 		<description>
-	Display a box that has a caption and a border enclosing other tags.
+			Display a box with caption and border (Equivalente a Div/Caption en ZK 6+)
 		</description>
 		<name>box</name>
-		<tag-class>org.zkoss.web.servlet.dsp.action.html.Box</tag-class>
+<!--		<tag-class>org.zkoss.zk.ui.dsp.html.Box</tag-class>-->
+<!--		<body-content>empty</body-content>-->
 	</tag>
+
 	<tag>
 		<description>
-	Generates the HTML's img tag.
+			Generates HTML img tag (Compatibilidad mejorada con ZK Components)
 		</description>
 		<name>img</name>
-		<tag-class>org.zkoss.web.servlet.dsp.action.html.Img</tag-class>
+		<!-- Clase actualizada -->
+<!--		<tag-class>org.zkoss.zk.ui.dsp.html.Img</tag-class>-->
+<!--		<body-content>empty</body-content>-->
 	</tag>
 </taglib>

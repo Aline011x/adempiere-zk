@@ -15,7 +15,7 @@ package org.adempiere.webui.util;
 
 import java.util.List;
 
-import org.zkoss.zul.SimpleTreeNode;
+import org.zkoss.zul.DefaultTreeNode;
 import org.zkoss.zul.Tree;
 import org.zkoss.zul.TreeModel;
 import org.zkoss.zul.Treechildren;

@@ -69,7 +69,7 @@ import java.util.Map;
  * 		@see FR [ 1697 ] Add definition for change style</a>
  *
  */
-public class GridTabRowRenderer implements RowRenderer, RowRendererExt, RendererCtrl, EventListener {
+public class GridTabRowRenderer implements RowRenderer<Object>, RowRendererExt, RendererCtrl, EventListener {
 
 	private static final String CURRENT_ROW_STYLE = "border-top: 2px solid #1f9bde; border-bottom: 2px solid #1f9bde";
 	private static final int MAX_TEXT_LENGTH = 60;
@@ -112,6 +112,11 @@ public class GridTabRowRenderer implements RowRenderer, RowRendererExt, Renderer
 		this.windowNo = windowNo;
 		this.dataBinder = new GridTabDataBinder(gridTab);
 		
+	}
+
+	@Override
+	public void render(Row row, Object data, int index) throws Exception {
+		this.render(row, data);
 	}
 
 	private WEditor getEditorCell(GridField gridField, Object object, boolean isNewEditor) {

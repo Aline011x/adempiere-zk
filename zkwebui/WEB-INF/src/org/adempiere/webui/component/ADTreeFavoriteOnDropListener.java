@@ -40,7 +40,7 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.MouseEvent;
 import org.zkoss.zul.Menuitem;
 import org.zkoss.zul.Menupopup;
-import org.zkoss.zul.SimpleTreeNode;
+import org.zkoss.zul.DefaultTreeNode;
 import org.zkoss.zul.Tree;
 import org.zkoss.zul.Treeitem;
 import org.zkoss.zul.Treerow;
@@ -237,7 +237,7 @@ public class ADTreeFavoriteOnDropListener implements EventListener
 	 * When Right click on Item show Delete Menupopup for Delete a node.
 	 * @param toNode
 	 */
-	private void menuItemList(SimpleTreeNode toNode)
+	private void menuItemList(DefaultTreeNode<MTreeNode> toNode)
 	{
 		int path[] = treeModel.getPath(treeModel.getRoot(), toNode);
 		Treeitem toItem = tree.renderItemByPath(path);
@@ -291,9 +291,9 @@ public class ADTreeFavoriteOnDropListener implements EventListener
 	 */
 	class DeleteListener implements EventListener
 	{
-		private SimpleTreeNode	toNode;
+		private DefaultTreeNode<MTreeNode>	toNode;
 
-		DeleteListener(SimpleTreeNode toNode)
+		DeleteListener(DefaultTreeNode<MTreeNode> toNode)
 		{
 			this.toNode = toNode;
 		}
@@ -418,14 +418,14 @@ public class ADTreeFavoriteOnDropListener implements EventListener
 	 * Insert Folder as Node in Tree 
 	 * @param toNode - the parent node to attach to. If null, use the root node.
 	 */
-	private void addNewFolder(SimpleTreeNode toNode)
+	private void addNewFolder(DefaultTreeNode<MTreeNode> toNode)
 	{
 		if (toNode == null)
 		{
 			toNode = treeModel.getRoot();
 		}
-		SimpleTreeNode parentNode = null;
-		
+		DefaultTreeNode<MTreeNode> parentNode = null;
+
 		MTreeFavoriteNode mTreeFavoriteNode = new MTreeFavoriteNode(Env.getCtx(), 0, null);
 		mTreeFavoriteNode.set_ValueOfColumn(MTreeFavoriteNode.COLUMNNAME_AD_Client_ID, AD_Client_ID);
 		mTreeFavoriteNode.setAD_Org_ID(AD_Org_ID);

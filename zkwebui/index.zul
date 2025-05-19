@@ -17,5 +17,5 @@ Copyright (C) 2007 Ashley G Ramdass.
 		var zkTimeoutText = "The page or component you request is no longer available. This is normally caused by timeout or rebooting the server.";
 		adempiere.store.set("zkTimeoutText", zkTimeoutText);
 	</script>
-	<window use="org.adempiere.webui.AdempiereWebUI"/>
+	<window apply="org.adempiere.webui.AdempiereWebUI"/>
 </zk>

@@ -44,7 +44,7 @@ import org.junit.jupiter.api.Test;
 import org.zkoss.zk.ui.AbstractPage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
-import org.zkoss.zkex.zul.Borderlayout;
+import org.zkoss.zul.Borderlayout;
 import org.zkoss.zkmax.zul.Portallayout;
 import org.zkoss.zul.Row;
 
